@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bancoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="bancoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clientes" EntityType="bancoModel.cliente" />
+    <EntitySet Name="ejecutivoes" EntityType="bancoModel.ejecutivo" />
+    <EntitySet Name="sucursals" EntityType="bancoModel.sucursal" />
+    <EntitySet Name="sysdiagrams" EntityType="bancoModel.sysdiagram" />
+    <EntitySet Name="targetas" EntityType="bancoModel.targeta" />
+    <EntitySet Name="transaccions" EntityType="bancoModel.transaccion" />
+  </EntityContainer>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="telefono" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ejecutivo">
+    <Key>
+      <PropertyRef Name="id_ejecutivo" />
+    </Key>
+    <Property Name="id_ejecutivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sucursal" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="contrasena" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="rut" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="targeta">
+    <Key>
+      <PropertyRef Name="id_targeta" />
+    </Key>
+    <Property Name="id_targeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente" Type="Int32" />
+    <Property Name="vencimiento" Type="DateTime" />
+    <Property Name="limite" Type="Int64" />
+    <Property Name="estado" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="transaccion">
+    <Key>
+      <PropertyRef Name="id_transaccion" />
+    </Key>
+    <Property Name="id_transaccion" Type="Int32" Nullable="false" />
+    <Property Name="ejecutivo" Type="Int32" />
+    <Property Name="numerotargeta" Type="Int32" />
+    <Property Name="tipo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="fecha" Type="DateTime" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="saldo" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+  </EntityType>
+</Schema>

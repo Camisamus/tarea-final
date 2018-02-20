@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bancoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="bancoModelStoreContainer">
+    <EntitySet Name="cliente" EntityType="bancoModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ejecutivo" EntityType="bancoModel.Store.ejecutivo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sucursal" EntityType="bancoModel.Store.sucursal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="bancoModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="targeta" EntityType="bancoModel.Store.targeta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transaccion" EntityType="bancoModel.Store.transaccion" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" />
+    <Property Name="telefono" Type="int" />
+  </EntityType>
+  <EntityType Name="ejecutivo">
+    <Key>
+      <PropertyRef Name="id_ejecutivo" />
+    </Key>
+    <Property Name="id_ejecutivo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sucursal" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="contrasena" Type="varchar" MaxLength="50" />
+    <Property Name="rut" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="targeta">
+    <Key>
+      <PropertyRef Name="id_targeta" />
+    </Key>
+    <Property Name="id_targeta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cliente" Type="int" />
+    <Property Name="vencimiento" Type="date" />
+    <Property Name="limite" Type="bigint" />
+    <Property Name="estado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="transaccion">
+    <Key>
+      <PropertyRef Name="id_transaccion" />
+    </Key>
+    <Property Name="id_transaccion" Type="int" Nullable="false" />
+    <Property Name="ejecutivo" Type="int" />
+    <Property Name="numerotargeta" Type="int" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="monto" Type="int" />
+    <Property Name="saldo" Type="nchar" MaxLength="10" />
+  </EntityType>
+</Schema>

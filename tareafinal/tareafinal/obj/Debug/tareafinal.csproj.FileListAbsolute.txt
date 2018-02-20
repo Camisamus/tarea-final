@@ -1,0 +1,5 @@
+c:\users\h\documents\visual studio 2010\Projects\tareafinal\tareafinal\bin\tareafinal.dll
+c:\users\h\documents\visual studio 2010\Projects\tareafinal\tareafinal\bin\tareafinal.pdb
+c:\users\h\documents\visual studio 2010\Projects\tareafinal\tareafinal\obj\Debug\tareafinal.csprojResolveAssemblyReference.cache
+c:\users\h\documents\visual studio 2010\Projects\tareafinal\tareafinal\obj\Debug\tareafinal.dll
+c:\users\h\documents\visual studio 2010\Projects\tareafinal\tareafinal\obj\Debug\tareafinal.pdb

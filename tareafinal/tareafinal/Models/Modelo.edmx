@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bancoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="bancoModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="bancoModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ejecutivo" EntityType="bancoModel.Store.ejecutivo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sucursal" EntityType="bancoModel.Store.sucursal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="bancoModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="targeta" EntityType="bancoModel.Store.targeta" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="transaccion" EntityType="bancoModel.Store.transaccion" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="int" />
+        </EntityType>
+        <EntityType Name="ejecutivo">
+          <Key>
+            <PropertyRef Name="id_ejecutivo" />
+          </Key>
+          <Property Name="id_ejecutivo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sucursal" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" />
+          <Property Name="rut" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sucursal">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="targeta">
+          <Key>
+            <PropertyRef Name="id_targeta" />
+          </Key>
+          <Property Name="id_targeta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cliente" Type="int" />
+          <Property Name="vencimiento" Type="date" />
+          <Property Name="limite" Type="bigint" />
+          <Property Name="estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="transaccion">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="int" Nullable="false" />
+          <Property Name="ejecutivo" Type="int" />
+          <Property Name="numerotargeta" Type="int" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="monto" Type="int" />
+          <Property Name="saldo" Type="nchar" MaxLength="10" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bancoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="bancoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clientes" EntityType="bancoModel.cliente" />
+          <EntitySet Name="ejecutivoes" EntityType="bancoModel.ejecutivo" />
+          <EntitySet Name="sucursals" EntityType="bancoModel.sucursal" />
+          <EntitySet Name="sysdiagrams" EntityType="bancoModel.sysdiagram" />
+          <EntitySet Name="targetas" EntityType="bancoModel.targeta" />
+          <EntitySet Name="transaccions" EntityType="bancoModel.transaccion" />
+        </EntityContainer>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="telefono" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ejecutivo">
+          <Key>
+            <PropertyRef Name="id_ejecutivo" />
+          </Key>
+          <Property Name="id_ejecutivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sucursal" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="contrasena" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="rut" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sucursal">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="targeta">
+          <Key>
+            <PropertyRef Name="id_targeta" />
+          </Key>
+          <Property Name="id_targeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cliente" Type="Int32" />
+          <Property Name="vencimiento" Type="DateTime" />
+          <Property Name="limite" Type="Int64" />
+          <Property Name="estado" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="transaccion">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="Int32" Nullable="false" />
+          <Property Name="ejecutivo" Type="Int32" />
+          <Property Name="numerotargeta" Type="Int32" />
+          <Property Name="tipo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" />
+          <Property Name="monto" Type="Int32" />
+          <Property Name="saldo" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bancoModelStoreContainer" CdmEntityContainer="bancoEntities">
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="bancoModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ejecutivoes">
+            <EntityTypeMapping TypeName="bancoModel.ejecutivo">
+              <MappingFragment StoreEntitySet="ejecutivo">
+                <ScalarProperty Name="id_ejecutivo" ColumnName="id_ejecutivo" />
+                <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="rut" ColumnName="rut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursals">
+            <EntityTypeMapping TypeName="bancoModel.sucursal">
+              <MappingFragment StoreEntitySet="sucursal">
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bancoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="targetas">
+            <EntityTypeMapping TypeName="bancoModel.targeta">
+              <MappingFragment StoreEntitySet="targeta">
+                <ScalarProperty Name="id_targeta" ColumnName="id_targeta" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="vencimiento" ColumnName="vencimiento" />
+                <ScalarProperty Name="limite" ColumnName="limite" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transaccions">
+            <EntityTypeMapping TypeName="bancoModel.transaccion">
+              <MappingFragment StoreEntitySet="transaccion">
+                <ScalarProperty Name="id_transaccion" ColumnName="id_transaccion" />
+                <ScalarProperty Name="ejecutivo" ColumnName="ejecutivo" />
+                <ScalarProperty Name="numerotargeta" ColumnName="numerotargeta" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Modelo">
+        <EntityTypeShape EntityType="bancoModel.cliente" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancoModel.ejecutivo" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancoModel.sucursal" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancoModel.sysdiagram" Width="1.5" PointX="2.75" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancoModel.targeta" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancoModel.transaccion" Width="1.5" PointX="4.75" PointY="3.75" Height="2.364889322916667" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

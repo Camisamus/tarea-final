@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master.master.cs" Inherits="Master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style4
+        {
+            height: 108px;
+            width: 1000px;
+        }
+        .style7
+        {
+            width: 1000px;
+        }
+        .style8
+        {
+            width: 473px;
+        }
+    </style>
+</head>
+<body bgcolor="#339933">
+    <form id="form1" runat="server">
+    <div>
+                <asp:Image ID="Image1" runat="server" Height="151px" 
+            ImageUrl="~/recursos/images.png" Width="100%" />
+            </div>
+    <table class="style1" width="100%">
+        <tr>
+            <td class="style3" colspan="2">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="style8">
+                <asp:Menu ID="Menu1" runat="server" BorderColor="Blue" BorderWidth="0px" 
+                    CssClass="dynamic" Font-Bold="True" Font-Names="Browallia New" 
+                    Font-Overline="True" Font-Size="XX-Large">
+                    <Items>
+                        <asp:MenuItem Text="Aaserca de" Value="Inicio" NavigateUrl="~/inicio.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Acceso usuario" Value="Log in" NavigateUrl="~/Login.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Procesos" Value="procesos">
+                            <asp:MenuItem Text="Consultar" Value="Consultar" NavigateUrl="~/see.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Agregar" Value="Agregar">
+                                <asp:MenuItem NavigateUrl="~/addtargeta.aspx" Text="Targeta" Value="Targeta">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/controllogeo1.aspx" 
+                                    Text="Cliente" Value="Cliente"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Modificar" Value="modificar" 
+                                NavigateUrl="~/edcliente1.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </td>
+            <td class="style4">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td class="style8">
+                &nbsp;</td>
+            <td class="style7">
+                &nbsp;</td>
+        </tr>
+    </table>
+    </form>
+    <p>
+        &nbsp;</p>
+</body>
+</html>
